@@ -9,6 +9,7 @@
 <body>
     <h3>CRUD de Productos</h3>
 
+    <a href="index.php?action=modalAdd">Agregar Producto ➕📁</a>
 
     <table class="table" border="1" >
         <thead>

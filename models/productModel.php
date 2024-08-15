@@ -13,5 +13,13 @@ class ProductModel {
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function addProduct(string $nombre, int $stock, float $precio): bool {
+        try {
+            $statement = $this->connection->prepare("INSERT INTO productos (nombre, stock, precio) VALUES (?, ?, ?)");
+            return $statement->execute([$nombre, $stock, $precio]);
+        } catch (PDOException $e) {
+            exit("Error adding the product: " . $e->getMessage());
+        }
+    }    
 }
 ?>

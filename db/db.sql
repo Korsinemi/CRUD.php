@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS `CRUD_PHP`;
 
 -- Usar la base de datos
-USE `hulk`;
+USE `CRUD_PHP`;
 
 -- Crear la tabla de productos
 CREATE TABLE IF NOT EXISTS `productos` (

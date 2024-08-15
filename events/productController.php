@@ -1,10 +1,10 @@
 <?php
+
 print("<br>Controlador<br>");
 
 require_once './models/ProductModel.php';
 
-class ProductController
-{
+class ProductController {
     private ProductModel $productModel;
 
     public function __construct() {
@@ -17,7 +17,7 @@ class ProductController
     }
 
     public function showAddProductForm(): void {
-        include './Views/modaladdproduct.php';
+        include './views/modalAddProduct.php';
     }
 
     public function addProduct(): void {
@@ -66,4 +66,5 @@ class ProductController
         }
     }    
 }
+
 ?>

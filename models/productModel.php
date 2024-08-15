@@ -1,7 +1,7 @@
 <?php
+
 print("Modelo");
-class ProductModel
-{
+class ProductModel {
     private PDO $connection;
 
     public function __construct() {
@@ -47,4 +47,5 @@ class ProductModel
         }
     }
 }
+
 ?>

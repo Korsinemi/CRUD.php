@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="public/styles.css">
+
 <?php
 
 require_once 'settings/connect.php';

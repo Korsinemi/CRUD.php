@@ -30,6 +30,7 @@
                     <td><?=$producto['precio']?></td>
                     <td>
                         <a href="index.php?action=modalUpdate&id=<?= $producto['id'] ?>">✏️</a>
+                        <a href="index.php?action=deleteProduct&id=<?= $producto['id'] ?>">🚮</a>
                     </td>
                 </tr>
             <?php endforeach;?>

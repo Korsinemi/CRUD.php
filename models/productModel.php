@@ -4,20 +4,17 @@ class ProductModel
 {
     private PDO $connection;
 
-    public function __construct()
-    {
+    public function __construct() {
         global $connection;
         $this->connection = $connection;
     }
 
-    public function getProducts(): array
-    {
+    public function getProducts(): array {
         $statement = $this->connection->query("SELECT * FROM productos");
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addProduct(string $nombre, int $stock, float $precio): bool
-    {
+    public function addProduct(string $nombre, int $stock, float $precio): bool {
         try {
             $statement = $this->connection->prepare("INSERT INTO productos (nombre, stock, precio) VALUES (?, ?, ?)");
             return $statement->execute([$nombre, $stock, $precio]);
@@ -26,15 +23,13 @@ class ProductModel
         }
     }
 
-    public function getProductById(int $id): array
-    {
+    public function getProductById(int $id): array {
         $statement = $this->connection->prepare("SELECT * FROM productos WHERE id = ?");
         $statement->execute([$id]);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function updateProduct(int $id, string $nombre, int $stock, float $precio): bool
-    {
+    public function updateProduct(int $id, string $nombre, int $stock, float $precio): bool {
         try {
             $statement = $this->connection->prepare("UPDATE productos SET nombre = ?, stock = ?, precio = ? WHERE id = ?");
             return $statement->execute([$nombre, $stock, $precio, $id]);
@@ -43,5 +38,13 @@ class ProductModel
         }
     }
 
+    public function deleteProduct(int $id): bool {
+        try {
+            $statement = $this->connection->prepare("DELETE FROM productos WHERE id = ?");
+            return $statement->execute([$id]);
+        } catch (PDOException $e) {
+            exit("Error eliminando el producto: " . $e->getMessage());
+        }
+    }
 }
 ?>

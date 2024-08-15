@@ -7,24 +7,20 @@ class ProductController
 {
     private ProductModel $productModel;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->productModel = new ProductModel();
     }
 
-    public function showProducts()
-    {
+    public function showProducts() {
         $products = $this->productModel->getProducts();
         include './views/productView.php';
     }
 
-    public function showAddProductForm(): void
-    {
+    public function showAddProductForm(): void {
         include './Views/modaladdproduct.php';
     }
 
-    public function addProduct(): void
-    {
+    public function addProduct(): void {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nombre = $_POST['nombre'];
             $stock = $_POST['stock'];
@@ -39,14 +35,12 @@ class ProductController
         }
     }
 
-    public function showUpdateProductForm(int $id): void
-    {
+    public function showUpdateProductForm(int $id): void {
         $producto = $this->productModel->getProductById($id);
         include './views/modalUpdateProduct.php';
     }
 
-    public function updateProduct(): void
-    {
+    public function updateProduct(): void {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $id = $_POST['id'];
             $nombre = $_POST['nombre'];
@@ -62,5 +56,14 @@ class ProductController
         }
     }
 
+    public function deleteProduct(int $id): void {
+        $success = $this->productModel->deleteProduct($id);
+        if ($success) {
+            header("Location: index.php");
+            exit();
+        } else {
+            exit("Error eliminando el producto");
+        }
+    }    
 }
 ?>

@@ -18,7 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                $productController->showUpdateProductForm($_GET['id']);
             }
             break;
-            
+
+        case 'deleteProduct':
+            if (isset($_GET['id'])) {
+                $productController->deleteProduct($_GET['id']);
+            }
+            break;
     }
 
     $productController->showProducts();

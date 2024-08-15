@@ -12,6 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         case 'modalAdd':
             include './views/modalAddProduct.php';
             break;
+        
+        case 'modalUpdate':
+            if (isset($_GET['id'])) {
+               $productController->showUpdateProductForm($_GET['id']);
+            }
+            break;
+            
     }
 
     $productController->showProducts();
@@ -23,6 +30,10 @@ elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
     switch ($action) {
         case 'add_product':
             $productController->addProduct();
+            break;
+
+        case 'update_product':
+            $productController->updateProduct();
             break;
     }
 

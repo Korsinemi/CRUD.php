@@ -18,17 +18,21 @@
                 <th>Nombre</th>
                 <th>Stock</th>
                 <th>Precio</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($products as $producto): ?>
                 <tr>
-                    <td><?= $producto['id'] ?></td>
-                    <td><?= $producto['nombre'] ?></td>
-                    <td><?= $producto['stock'] ?></td>
-                    <td><?= $producto['precio'] ?></td>
+                    <td><?=$producto['id']?></td>
+                    <td><?=$producto['nombre']?></td>
+                    <td><?=$producto['stock']?></td>
+                    <td><?=$producto['precio']?></td>
+                    <td>
+                        <a href="index.php?action=modalUpdate&id=<?= $producto['id'] ?>">✏️</a>
+                    </td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endforeach;?>
         </tbody>
     </table>
 
